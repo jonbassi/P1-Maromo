@@ -78,14 +78,26 @@ public class GerenciarFuncionario {
                     System.out.println("Digite o id da Empresa: ");
                     String IdEmpresa = entrada.next();
                     empresa.setIdEmpresa(IdEmpresa);
+                    if(entrada.hasNextLine()) {
+                        String idEmpresa = entrada.nextLine();
+                        func.setNomeFunc(idEmpresa);
+                    }
 
                     System.out.println("Digite a Razão Social da Empresa: ");
                     String Rsocial = entrada.next();
                     empresa.setRazaoSocial(Rsocial);
+                    if(entrada.hasNextLine()) {
+                        String rsocial = entrada.nextLine();
+                        func.setNomeFunc(rsocial);
+                    }
 
                     System.out.println("Digite o CNPJ da empresa: ");
                     String cnpj = entrada.next();
                     empresa.setCnpj(cnpj);
+                    if(entrada.hasNextLine()) {
+                        String CNPJ = entrada.nextLine();
+                        func.setNomeFunc(CNPJ);
+                    }
 
                     break;
 
