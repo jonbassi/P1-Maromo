@@ -48,9 +48,14 @@ public class Empresa {
         return status;
     }
 
-    public void adicionarEmpregados(Funcionario f, Empresa e) {
-        if(existeEmpresa(e)){
-            e.funcionarios.add(f);  
+    public void adicionarEmpregados(Funcionario f) {
+        funcionarios.add(f);
+
+    }
+
+    public void mostrarFuncionarioEspecifico(Funcionario f) {
+        for (Funcionario ignored : funcionarios) {
+            f.imprimirFuncionario();
         }
     }
 

@@ -1,6 +1,7 @@
 package EmpresaFuncionario;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -9,9 +10,17 @@ public class GerenciarFuncionario {
     public static void main(String[] args) {
         boolean status = true;
 
+        /*
+        TODO: Criar uma lista de funcionários
+        TODO: Criar uma lista de empresas
+        TODO: Perguntar ao usuário qual funcionário dentro da lista e qual empresa dentro da lista será feito os processos.
+        TODO: Testar.
+        */
+
+        Funcionario func = new Funcionario();
+        Empresa empresa = new Empresa();
+
         while(status) {
-            Funcionario func = new Funcionario();
-            Empresa empresa = new Empresa();
 
             System.out.println();
             System.out.println("Digite a opção desejada: ");
@@ -77,6 +86,7 @@ public class GerenciarFuncionario {
                     System.out.println("Digite o CNPJ da empresa: ");
                     String cnpj = entrada.next();
                     empresa.setCnpj(cnpj);
+
                     break;
 
                 case 3:
@@ -96,7 +106,7 @@ public class GerenciarFuncionario {
 
                 case 5:
                     // listar funcionário
-                    func.imprimirFuncionario();
+                    // empresa.mostrarFuncionarioEspecifico(func);
                     break;
 
                 case 6:
@@ -106,7 +116,7 @@ public class GerenciarFuncionario {
 
                 case 7:
                     System.out.println("Adicionar funcionário ao quadro da empresa");
-                    empresa.adicionarEmpregados(func, empresa);
+                    empresa.adicionarEmpregados(func);
                     break;
 
                 case 8:
