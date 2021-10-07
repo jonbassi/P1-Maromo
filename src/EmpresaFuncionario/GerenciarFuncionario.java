@@ -39,6 +39,10 @@ public class GerenciarFuncionario {
                     System.out.println("Digite o salário do funcionário: ");
                     double salario = entrada.nextDouble();
                     func.setSalario(salario);
+                    if(entrada.hasNextLine()) {
+                        String nome = entrada.nextLine();
+                        func.setNomeFunc(nome);
+                    }
 
                     System.out.println("Digite o nome do funcionário: ");
 
