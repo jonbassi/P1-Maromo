@@ -11,8 +11,8 @@ public class GerenciarFuncionario {
         boolean status = true;
 
         /*
-        TODO: Criar uma lista de funcionários
-        TODO: Criar uma lista de empresas
+        TODO: Criar uma lista de funcionários.
+        TODO: Criar uma lista de empresas.
         TODO: Perguntar ao usuário qual funcionário dentro da lista e qual empresa dentro da lista será feito os processos.
         TODO: Testar.
         */
