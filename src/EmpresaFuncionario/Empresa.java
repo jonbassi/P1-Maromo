@@ -19,11 +19,11 @@ public class Empresa {
     public String getIdEmpresa() { return idEmpresa; }
     public void setIdEmpresa(String idEmpresa) { this.idEmpresa = idEmpresa; }
     // Funcionários
-    public List<Funcionario> getFuncionarios() { return funcionarios; }
-    public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios.addAll(funcionarios); }
-    // Empresa
-    public List<Empresa> getEmpresas() { return empresas; }
-    public void setEmpresas(List<Empresa> empresas) { this.empresas.addAll(empresas); }
+    // public List<Funcionario> getFuncionarios() { return funcionarios; }
+    // public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios.addAll(funcionarios); }
+    // // Empresa
+    // public List<Empresa> getEmpresas() { return empresas; }
+    // public void setEmpresas(List<Empresa> empresas) { this.empresas.addAll(empresas); }
     // CNPJ
     public String getCnpj() { return cnpj; }
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
@@ -35,21 +35,23 @@ public class Empresa {
     // Methods
 
 
-    public Boolean existeEmpresa(Empresa e) {
-        List<Empresa> empresaList = getEmpresas();
-        boolean status = false;
+    // public Boolean existeEmpresa(Empresa e) {
+    //     List<Empresa> empresaList = getEmpresas();
+    //     boolean status = false;
 
-        for (Empresa empresaVerify : empresaList){
-            if (Objects.equals(e.idEmpresa, empresaVerify.idEmpresa)){
-                status = true;
-                break;
-            }
-        }
-        return status;
-    }
+    //     for (Empresa empresaVerify : empresaList){
+    //         if (Objects.equals(e.idEmpresa, empresaVerify.idEmpresa)){
+    //             status = true;
+    //             break;
+    //         }
+    //     }
+    //     return status;
+    // }
 
     public void adicionarEmpregados(Funcionario f) {
+        // TODO : Fix error at Teste.java line 17.
         funcionarios.add(f);
+        
 
     }
 
@@ -60,14 +62,14 @@ public class Empresa {
     }
 
     // Empresa única
-    public void mostrarEmpregados(Empresa e){
+    // public void mostrarEmpregados(Empresa e){
 
-        if(existeEmpresa(e)) {
-            System.out.println(e.funcionarios);
-        } else{
-            System.out.println("Empresa inexistente.");
-        }
-    }
+    //     if(existeEmpresa(e)) {
+    //         System.out.println(e.funcionarios);
+    //     } else{
+    //         System.out.println("Empresa inexistente.");
+    //     }
+    // }
 
     // Todas empresas
     public void mostrarTodosEmpregados() {
