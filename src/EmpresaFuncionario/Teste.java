@@ -15,10 +15,10 @@ public class Teste {
         funcionario.setDataContratacao(LocalDate.now());
         funcionario.setEstaAtivo(true);
 
-         // empresa.adicionarEmpregados(funcionario); // Exception in thread "main" java.lang.NullPointerException
+        empresa.adicionarEmpregados(funcionario); // Exception in thread "main" java.lang.NullPointerException
                                                      // at EmpresaFuncionario.Empresa.adicionarEmpregados(Empresa.java:53)
                                                      // at EmpresaFuncionario.Teste.main(Teste.java:17)
-
+        empresa.mostrarTodosEmpregados();
 
 
 

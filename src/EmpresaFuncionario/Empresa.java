@@ -1,5 +1,6 @@
 package EmpresaFuncionario;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,8 +11,8 @@ public class Empresa {
     private String idEmpresa;
     private String razaoSocial;
     private String cnpj;
-    public List<Funcionario> funcionarios;
-    private List<Empresa> empresas;
+    public List<Funcionario> funcionarios = new ArrayList<>();
+    public List<Empresa> empresas = new ArrayList<>();
 
     // Setters and Getters
 
@@ -35,18 +36,17 @@ public class Empresa {
     // Methods
 
 
-    // public Boolean existeEmpresa(Empresa e) {
-    //     List<Empresa> empresaList = getEmpresas();
-    //     boolean status = false;
+    public Boolean existeEmpresa(Empresa e) {
+        boolean status = false;
 
-    //     for (Empresa empresaVerify : empresaList){
-    //         if (Objects.equals(e.idEmpresa, empresaVerify.idEmpresa)){
-    //             status = true;
-    //             break;
-    //         }
-    //     }
-    //     return status;
-    // }
+        for (Empresa empresaVerify : empresas){
+            if (Objects.equals(e.idEmpresa, empresaVerify.idEmpresa)){
+                status = true;
+                break;
+            }
+        }
+        return status;
+    }
 
     public void adicionarEmpregados(EmpresaFuncionario.Funcionario f) {
         // TODO : Fix error at Teste.java line 17.
@@ -61,15 +61,15 @@ public class Empresa {
         }
     }
 
-    // Empresa única
-    // public void mostrarEmpregados(Empresa e){
+    //Empresa única
+    public void mostrarEmpregados(Empresa e){
 
-    //     if(existeEmpresa(e)) {
-    //         System.out.println(e.funcionarios);
-    //     } else{
-    //         System.out.println("Empresa inexistente.");
-    //     }
-    // }
+        if(existeEmpresa(e)) {
+            System.out.println(e.funcionarios);
+        } else{
+            System.out.println("Empresa inexistente.");
+        }
+    }
 
     // Todas empresas
     public void mostrarTodosEmpregados() {
