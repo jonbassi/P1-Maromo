@@ -10,7 +10,7 @@ public class Empresa {
     private String idEmpresa;
     private String razaoSocial;
     private String cnpj;
-    private List<Funcionario> funcionarios;
+    public List<Funcionario> funcionarios;
     private List<Empresa> empresas;
 
     // Setters and Getters
@@ -48,7 +48,7 @@ public class Empresa {
     //     return status;
     // }
 
-    public void adicionarEmpregados(Funcionario f) {
+    public void adicionarEmpregados(EmpresaFuncionario.Funcionario f) {
         // TODO : Fix error at Teste.java line 17.
         funcionarios.add(f);
         
