@@ -77,10 +77,10 @@ public class Empresa {
         }
     }
     
-    public Boolean contemFuncionario(Funcionario f) {
+    public Boolean contemFuncionario(int f) {
         boolean status = false;
         for (Funcionario funcionario : funcionarios) {
-            status = f.getIdFunc() == funcionario.getIdFunc();
+            status = f == funcionario.getIdFunc();
         }
         return status;
     }

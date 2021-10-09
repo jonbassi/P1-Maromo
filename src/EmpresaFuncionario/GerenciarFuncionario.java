@@ -164,12 +164,24 @@ public class GerenciarFuncionario {
                     break;
 
                 case 8:
+                    // TODO : Testar após o caso 7 estar completo, pois não consigo o retorno da lista de funcionários cadastrado na empresa
                     System.out.println("Verificar existência de funcionário na empresa");
-                    if (empresa.contemFuncionario(func)) {
-                        System.out.println("Funcionário existente");
+                    System.out.println("Digite o ID do funcionário que você deseja verificar: ");
+                    int idFuncBusca = entrada.nextInt();
 
-                    } else {
-                        System.out.println("Funcionário não encontrado!");
+                    System.out.println("Digite o ID da empresa que esse funcionário está cadastrado: ");
+                    int idEmpBusca = entrada.nextInt();
+
+                    for (Empresa empresaBusca : listaDeEmpresas){
+                        if (String.valueOf(idEmpBusca) == empresaBusca.getIdEmpresa()) {
+                            if (empresaBusca.contemFuncionario(idFuncBusca)){
+                                System.out.println("Funcionário existente nessa empresa");
+                            } else {
+                                System.out.println("Funcionário não encontrado!");
+                            }
+                        } else {
+                            System.out.println("Empresa não encontrada, por favor, verifique se o ID está correto.");
+                        }
                     }
                     break;
 
