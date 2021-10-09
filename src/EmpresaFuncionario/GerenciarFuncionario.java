@@ -142,6 +142,7 @@ public class GerenciarFuncionario {
                             break;
                         }
                     }
+                    // found = False que é para quando não encontrar o funcionário dentro da lista de funcionários.
                     if(!found){
                         System.out.println("Funcionário não encontrado 😢");
                     }
@@ -155,6 +156,10 @@ public class GerenciarFuncionario {
 
                 case 7:
                     System.out.println("Adicionar funcionário ao quadro da empresa");
+                    // TODO : Percorre a lista
+                    // TODO : Acha o funcionário especificado
+                    // TODO : Empresa especificada
+                    // TODO : Inclui esse funcionário no objeto empresa (Empresa especificada) no método adicionar empregados
                     empresa.adicionarEmpregados(func);
                     break;
 
