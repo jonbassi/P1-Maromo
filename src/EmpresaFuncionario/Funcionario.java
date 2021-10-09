@@ -11,6 +11,7 @@ public class Funcionario {
     private boolean estaAtivo;
     private String nomeFunc;
     private String departamento;
+    private String profissao;
     private String documento;
     private LocalDate dataContratacao;
 
@@ -51,6 +52,13 @@ public class Funcionario {
     public String getDepartamento() {
         return departamento;
     }
+    // Profissão
+    public void setProfissao(String departamento) {
+        this.profissao = profissao;
+    }
+    public String getProfissao() {
+        return profissao;
+    }
     // Documento
     public void setDocumento(String documento) {
         this.documento = documento;
@@ -82,6 +90,7 @@ public class Funcionario {
         setDocumento(null);
         setEstaAtivo(false);
         setDepartamento(null);
+        setProfissao(null); // bassi
         setDataContratacao(null);
         setSalario(0);
         setIdFunc(-1);

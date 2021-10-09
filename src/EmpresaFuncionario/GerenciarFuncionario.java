@@ -1,6 +1,7 @@
 package EmpresaFuncionario;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -10,17 +11,20 @@ public class GerenciarFuncionario {
     public static void main(String[] args) {
         boolean status = true;
 
-        /*
-        TODO : Criar uma lista de funcionários.
-        TODO : Criar uma lista de empresas.
-        TODO : Perguntar ao usuário qual funcionário dentro da lista e qual empresa dentro da lista será feito os processos.
-        TODO : Testar.
-        */
+        List<Funcionario> listaDeFuncionarios = new ArrayList<>();
+        List<Empresa> listaDeEmpresas = new ArrayList<>();
 
-        Funcionario func = new Funcionario();
-        Empresa empresa = new Empresa();
+        int idFunc = 1;
+
+        // TODO : Criar uma lista de funcionários. ✅ 👌
+        // TODO : Criar uma lista de empresas. ✅ 👌
+        // TODO : Adicionar funcionário a lista de funcionários | Adicionar empresa a lista de empresas. ✅ 👌
+        // TODO : Testar. ✅ 👌
 
         while(status) {
+
+            Funcionario func = new Funcionario();
+            Empresa empresa = new Empresa();
 
             System.out.println();
             System.out.println("Digite a opção desejada: ");
@@ -41,9 +45,9 @@ public class GerenciarFuncionario {
             switch (option) {
                 case 1:
                     // Cadastrar funcionário
-                    System.out.println("Digite o ID do funcionário: ");
-                    int idfuncionario = entrada.nextInt();
-                    func.setIdFunc(idfuncionario);
+                    //System.out.println("Digite o ID do funcionário: ");
+                    //int idfuncionario = entrada.nextInt();
+                    func.setIdFunc(idFunc);
 
                     System.out.println("Digite o salário do funcionário: ");
                     double salario = entrada.nextDouble();
@@ -64,12 +68,19 @@ public class GerenciarFuncionario {
                     String departamentoF = entrada.nextLine();
                     func.setDepartamento(departamentoF);
 
+                    System.out.println("Digite a profissão do funcionário: ");
+                    String profissaoF = entrada.nextLine();
+                    func.setProfissao(profissaoF);
+
                     System.out.println("Digite o número do documento do funcionário: ");
                     String doc = entrada.nextLine();
                     func.setDocumento(doc);
 
                     func.setDataContratacao(LocalDate.now());
                     func.setEstaAtivo(true);
+
+                    listaDeFuncionarios.add(func);
+                    idFunc += 1;
 
                     break;
 
@@ -99,6 +110,8 @@ public class GerenciarFuncionario {
                         func.setNomeFunc(CNPJ);
                     }
 
+                    listaDeEmpresas.add(empresa);
+
                     break;
 
                 case 3:
@@ -117,8 +130,22 @@ public class GerenciarFuncionario {
                     break;
 
                 case 5:
-                    // TODO : listar funcionário
-                    // empresa.mostrarFuncionarioEspecifico(func);
+                    // Mostrar um funcionário específico
+                    // Pedir empresa do funcionário
+                    boolean found = false;
+                    System.out.println("Digite o ID do funcionário que quer buscar: ");
+                    int idBuscar = entrada.nextInt();
+                    for (Funcionario funcionarioBusca : listaDeFuncionarios) {
+                        if (idBuscar == funcionarioBusca.getIdFunc()) {
+                            funcionarioBusca.imprimirFuncionario();
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(!found){
+                        System.out.println("Funcionário não encontrado 😢");
+                    }
+
                     break;
 
                 case 6:
@@ -142,7 +169,6 @@ public class GerenciarFuncionario {
                     break;
 
                 case 9:
-                    System.out.println("FINALIZAR");
                     status = false;
                     break;
 

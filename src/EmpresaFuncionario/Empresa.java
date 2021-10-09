@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Empresa {
 
     // Attributes
-
+    
     private String idEmpresa;
     private String razaoSocial;
     private String cnpj;
@@ -49,7 +49,6 @@ public class Empresa {
     }
 
     public void adicionarEmpregados(EmpresaFuncionario.Funcionario f) {
-        // TODO : Fix error at Teste.java line 17.
         funcionarios.add(f);
         
 
