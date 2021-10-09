@@ -109,6 +109,7 @@ public class Funcionario {
         System.out.println("ID do Funcionário: " + idFunc);
         System.out.println("Nome do Funcionário: " + nomeFunc);
         System.out.println("Departamento: " + departamento);
+        System.out.println("Profissão: " + profissao);
         System.out.println("Documento: " + documento);
         System.out.println("Data da Contratação: " + dataContratacao);
         System.out.println("Salário do Funcionário: " + salario);

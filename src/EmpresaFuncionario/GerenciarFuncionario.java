@@ -8,6 +8,11 @@ import java.util.Scanner;
 
 public class GerenciarFuncionario {
 
+    // TODO : Padronizar os nomes das variáveis. Por exemplo: empresaAdd empresaBusca empresaMetodo ou empresaAdicionar | funcMetodo ou funcionarioMetodo
+    // TODO : Nome do funcionário -> Nome da empresa.
+    // TODO : Padronização dos cases. Lógica e Estrutura ser a mesma para todos.
+    // TODO : Tratamento de Erros e Exceções.
+
     public static void main(String[] args) {
         boolean status = true;
 
@@ -17,16 +22,12 @@ public class GerenciarFuncionario {
         int idFunc = 1;
         int idEmpresa = 1;
 
-        // TODO : Criar uma lista de funcionários. ✅ 👌
-        // TODO : Criar uma lista de empresas. ✅ 👌
-        // TODO : Adicionar funcionário a lista de funcionários | Adicionar empresa a lista de empresas. ✅ 👌
-        // TODO : Testar. ✅ 👌
-
         while(status) {
 
             Funcionario func = new Funcionario();
             Empresa empresa = new Empresa();
 
+            System.out.println();
             System.out.println();
             System.out.println("Digite a opção desejada: ");
             System.out.println("1 - Cadastrar funcionário");
@@ -47,19 +48,26 @@ public class GerenciarFuncionario {
                 case 1:
 
                     System.out.println("Digite o nome do funcionário: ");
-
                     if(entrada.hasNextLine()) {
                         String nome = entrada.nextLine();
                         func.setNomeFunc(nome);
                     }
+                    String nome = entrada.nextLine();
+                    func.setNomeFunc(nome);
 
                     System.out.println("Digite o salário do funcionário: ");
-                    double salario = entrada.nextDouble();
-                    func.setSalario(salario);
+                    if (entrada.hasNextLine()){
+                        double salario = entrada.nextDouble();
+                        func.setSalario(salario);
+                    }
 
                     System.out.println("Digite o departamento do funcionário: ");
                     String departamentoF = entrada.nextLine();
                     func.setDepartamento(departamentoF);
+                    if(entrada.hasNextLine()) {
+                        String depart = entrada.nextLine();
+                        func.setDepartamento(depart);
+                    }
 
                     System.out.println("Digite a profissão do funcionário: ");
                     String profissaoF = entrada.nextLine();
@@ -112,7 +120,10 @@ public class GerenciarFuncionario {
                     break;
 
                 case 3:
+                    System.out.println("Busque a empresa de");
                     System.out.println("Digite o novo salário do funcionário");
+                    System.out.println("Pesquise o funcionario que deseja alterar o salario");
+                    int idFuncSalarioAlterar = entrada.nextInt(); // Variável
                     double novoSalario = entrada.nextInt();
                     func.atualizarSalario(novoSalario);
                     break;
@@ -139,8 +150,8 @@ public class GerenciarFuncionario {
                             System.out.println("Digite o ID do funcionário que quer buscar: ");
                             int idBuscar = entrada.nextInt();
                             for (Funcionario funcionarioBusca : listaDeFuncionarios) {
-                                if (idBuscar == funcionarioBusca.getIdFunc()) {
-                                    funcionarioBusca.imprimirFuncionario();
+                                if (idBuscar == funcionarioBusca.getIdFunc() && empresabusca.contemFuncionario(idBuscar)) {
+                                    empresabusca.mostrarFuncionarioEspecifico(funcionarioBusca);
                                     found = true;
                                     break;
                                 }
@@ -158,8 +169,14 @@ public class GerenciarFuncionario {
                     break;
 
                 case 6:
-                    System.out.println("Listar Funcionário de todas as empresas");
-                    empresa.mostrarTodosEmpregados();
+                    // TODO : Percorrer todas as empresas e mostrarTodosEmpregados de cada uma. Bonitinho mostrando de qual empresa está referindo.
+                    System.out.println("Listando Funcionários de todas as empresas");
+                    for (Empresa empresaListarTodosFuncionarios : listaDeEmpresas) {
+                        System.out.println("Empresa " + empresaListarTodosFuncionarios.getRazaoSocial());
+                        empresaListarTodosFuncionarios.mostrarTodosEmpregados();
+                        System.out.println();
+                        System.out.println();
+                    }
                     break;
 
                 case 7:
@@ -189,10 +206,6 @@ public class GerenciarFuncionario {
                         System.out.println("Empresa e/ou funcionário não encontrado(s).");
                     }
 
-                    // TODO : Percorre a lista
-                    // TODO : Acha o funcionário especificado
-                    // TODO : Empresa especificada
-                    // TODO : Inclui esse funcionário no objeto empresa (Empresa especificada) no método adicionar empregados
 
                     break;
 
@@ -209,6 +222,7 @@ public class GerenciarFuncionario {
                         if (String.valueOf(idEmpBusca).equals(empresaBusca.getIdEmpresa())) {
                             if (empresaBusca.contemFuncionario(idFuncBusca)){
                                 System.out.println("Funcionário existente nessa empresa");
+
                             } else {
                                 System.out.println("Funcionário não encontrado!");
                             }
