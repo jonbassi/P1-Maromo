@@ -101,12 +101,12 @@ public class GerenciarFuncionario {
                     // Cadastrar Empresa
                     System.out.println();
                     System.out.println("Digite a Razão Social da Empresa: ");
-                    String empresaRsocial = entrada.next();
-                    empresa.setRazaoSocial(empresaRsocial);
                     if(entrada.hasNextLine()) {
-                        String empresaRazaoSocial = entrada.nextLine();
-                        func.setNomeFunc(empresaRazaoSocial);
+                        String razaoSocial = entrada.nextLine();
+                        empresa.setRazaoSocial(razaoSocial);
                     }
+                    String razaoSocial = entrada.nextLine();
+                    empresa.setRazaoSocial(razaoSocial);
 
                     System.out.println();
                     System.out.println("Digite o CNPJ da empresa: ");
