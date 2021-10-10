@@ -118,11 +118,34 @@ public class GerenciarFuncionario {
 
                 case 3:
                     // Atualizar salário.
-                    System.out.println("Busque a empresa de");
-                    System.out.println("Digite o novo salário do funcionário");
-                    System.out.println("Pesquise o funcionario que deseja alterar o salario");
-                    double novoSalarioFunc = entrada.nextDouble();
-                    func.atualizarSalario(novoSalarioFunc);
+                    System.out.println("Digite o ID do funcionário: ");
+                    int funcIdAtualizarSalario = entrada.nextInt();
+
+                    System.out.println("Digite o ID da empresa: ");
+                    int empresaIdAtualizarSalario = entrada.nextInt();
+
+                    boolean updated = false;
+
+                    System.out.println("Digite o novo salario do funcionário que voce deseja alterar: ");
+                    double funcNovoSalario = entrada.nextDouble();
+
+                    for (Empresa empresaAtualizarObj : listaDeEmpresas) {
+                        if (String.valueOf(empresaIdAtualizarSalario).equals(empresaAtualizarObj.getIdEmpresa())) {
+                            for (Funcionario funcionarioAtualizarObj : listaDeFuncionarios) {
+                                if (funcIdAtualizarSalario == funcionarioAtualizarObj.getIdFunc() && empresaAtualizarObj.existeFuncionario(funcIdAtualizarSalario)) {
+                                    funcionarioAtualizarObj.atualizarSalario(funcNovoSalario);
+                                    System.out.println("Salário do funcionário: " + funcionarioAtualizarObj.getNomeFunc() + " atualizado com sucesso!");
+                                    updated = true;
+                                    break;
+                                }
+                            }
+                        }              
+                    }
+
+                    if(!updated) {
+                        System.out.println("Empresa e/ou funcionário não encontrado(s).");
+                    }
+
                     break;
 
                 case 4:
