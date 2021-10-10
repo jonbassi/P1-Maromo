@@ -19,15 +19,11 @@ public class Empresa {
     // ID Empresa
     public String getIdEmpresa() { return idEmpresa; }
     public void setIdEmpresa(String idEmpresa) { this.idEmpresa = idEmpresa; }
-    // Funcionários
-    // public List<Funcionario> getFuncionarios() { return funcionarios; }
-    // public void setFuncionarios(List<Funcionario> funcionarios) { this.funcionarios.addAll(funcionarios); }
-    // // Empresa
-    // public List<Empresa> getEmpresas() { return empresas; }
-    // public void setEmpresas(List<Empresa> empresas) { this.empresas.addAll(empresas); }
+
     // CNPJ
     public String getCnpj() { return cnpj; }
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
+
     // Razão Social
     public String getRazaoSocial() { return razaoSocial; }
     public void setRazaoSocial(String razaoSocial) { this.razaoSocial = razaoSocial; }
@@ -35,12 +31,12 @@ public class Empresa {
 
     // Methods
 
-
+    // Verificar a existência de uma empresa.
     public Boolean existeEmpresa(Empresa e) {
         boolean status = false;
 
-        for (Empresa empresaVerify : empresas){
-            if (Objects.equals(e.idEmpresa, empresaVerify.idEmpresa)){
+        for (Empresa empresaExiste : empresas) {
+            if (Objects.equals(e.idEmpresa, empresaExiste.idEmpresa)) {
                 status = true;
                 break;
             }
@@ -48,36 +44,8 @@ public class Empresa {
         return status;
     }
 
-    public void adicionarEmpregados(EmpresaFuncionario.Funcionario f) {
-        funcionarios.add(f);
-        
-
-    }
-
-    public void mostrarFuncionarioEspecifico(Funcionario f) {
-        for (Funcionario ignored : funcionarios) {
-            f.imprimirFuncionario();
-        }
-    }
-
-    //Empresa única
-    public void mostrarEmpregados(Empresa e){
-
-        if(existeEmpresa(e)) {
-            System.out.println(e.funcionarios);
-        } else{
-            System.out.println("Empresa inexistente.");
-        }
-    }
-
-    // Todas empresas
-    public void mostrarTodosEmpregados() {
-        for (Funcionario funcionario : funcionarios) {
-            funcionario.imprimirFuncionario();
-        }
-    }
-    
-    public Boolean contemFuncionario(int f) {
+    // Verificar a existência de um funcionário
+    public Boolean existeFuncionario(int f) {
         boolean status = false;
         for (Funcionario funcionario : funcionarios) {
             status = f == funcionario.getIdFunc();
@@ -85,6 +53,36 @@ public class Empresa {
         return status;
     }
 
+    // Adicionar empregados / funcionários a lista.
+    public void adicionarEmpregados(EmpresaFuncionario.Funcionario f) {
+        funcionarios.add(f);
+    }
+
+    // Mostrar um funcionário específico de uma empresa.
+    public void mostrarFuncionarioEspecifico(Funcionario f) {
+        for (Funcionario ignored : funcionarios) {
+            f.imprimirFuncionario();
+        }
+    }
+
+    // Mostrar empregados de uma empresa.
+    public void mostrarEmpregados(Empresa e) {
+
+        if(existeEmpresa(e)) {
+            System.out.println(e.funcionarios);
+        } else {
+            System.out.println("Empresa inexistente.");
+        }
+    }
+
+    // Mostrar empregados de todas as empresas.
+    public void mostrarTodosEmpregados() {
+        for (Funcionario funcionario : funcionarios) {
+            funcionario.imprimirFuncionario();
+        }
+    }
+
+    // Inativar funcionário específico.
     public void inativarfuncionario(Funcionario f) {
         for (Funcionario funcionario : funcionarios) {
             if (f.getIdFunc() == funcionario.getIdFunc()) {
@@ -94,7 +92,8 @@ public class Empresa {
             }        
         }
     }
-    
+
+    // Mostrar todos funcionários ativos.
     public void mostrarFuncionariosAtivos() {
         for (Funcionario funcionario : funcionarios) {
             if(funcionario.getEstaAtivo()) {
