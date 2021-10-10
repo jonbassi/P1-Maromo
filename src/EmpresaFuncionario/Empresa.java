@@ -101,5 +101,11 @@ public class Empresa {
             }
         }
     }
+
+    public void imprimirEmpresa() {
+        System.out.println("ID da Empresa: " + idEmpresa);
+        System.out.println("Razão Social da Empresa: " + razaoSocial);
+        System.out.println("CNPJ da Empresa: " + cnpj);
+    }
 }
 

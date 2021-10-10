@@ -3,7 +3,6 @@ package EmpresaFuncionario;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class GerenciarFuncionario {
@@ -26,6 +25,7 @@ public class GerenciarFuncionario {
 
             System.out.println();
             System.out.println();
+
             System.out.println("Digite a opção desejada: ");
             System.out.println("1 - Cadastrar funcionário");
             System.out.println("2 - Cadastrar Empresa");
@@ -37,13 +37,19 @@ public class GerenciarFuncionario {
             System.out.println("8 - Verificar existência de funcionário na empresa");
             System.out.println("9 - FINALIZAR");
 
+            System.out.println();
+
             System.out.println("Entre com sua opção: ");
             Scanner entrada = new Scanner(System.in);
             int option      = entrada.nextInt();
 
+            System.out.println();
+
+
             switch (option) {
                 case 1:
                     // Cadastrar funcionário.
+                    System.out.println();
                     System.out.println("Digite o nome do funcionário: ");
                     if(entrada.hasNextLine()) {
                         String nomefunc = entrada.nextLine();
@@ -52,12 +58,14 @@ public class GerenciarFuncionario {
                     String nomefunc = entrada.nextLine();
                     func.setNomeFunc(nomefunc);
 
+                    System.out.println();
                     System.out.println("Digite o salário do funcionário: ");
                     if (entrada.hasNextLine()) {
                         double salario = entrada.nextDouble();
                         func.setSalario(salario);
                     }
 
+                    System.out.println();
                     System.out.println("Digite o departamento do funcionário: ");
                     String departamentoFunc = entrada.nextLine();
                     func.setDepartamento(departamentoFunc);
@@ -66,10 +74,12 @@ public class GerenciarFuncionario {
                         func.setDepartamento(departamentoFuncx);
                     }
 
+                    System.out.println();
                     System.out.println("Digite a profissão do funcionário: ");
                     String profissaoFunc = entrada.nextLine();
                     func.setProfissao(profissaoFunc);
 
+                    System.out.println();
                     System.out.println("Digite o número do documento do funcionário: ");
                     String docFunc = entrada.nextLine();
                     func.setDocumento(docFunc);
@@ -89,6 +99,7 @@ public class GerenciarFuncionario {
 
                 case 2:
                     // Cadastrar Empresa
+                    System.out.println();
                     System.out.println("Digite a Razão Social da Empresa: ");
                     String empresaRsocial = entrada.next();
                     empresa.setRazaoSocial(empresaRsocial);
@@ -97,6 +108,7 @@ public class GerenciarFuncionario {
                         func.setNomeFunc(empresaRazaoSocial);
                     }
 
+                    System.out.println();
                     System.out.println("Digite o CNPJ da empresa: ");
                     String empresaCnpj = entrada.next();
                     empresa.setCnpj(empresaCnpj);
@@ -118,8 +130,21 @@ public class GerenciarFuncionario {
 
                 case 3:
                     // Atualizar salário.
+
+                    for (Funcionario funcionarioMostrarTodos : listaDeFuncionarios) {
+                        funcionarioMostrarTodos.imprimirFuncionario();
+                        System.out.println();
+                    }
+
                     System.out.println("Digite o ID do funcionário: ");
                     int funcIdAtualizarSalario = entrada.nextInt();
+
+                    System.out.println();
+
+                    for (Empresa empresaMostrarTodas : listaDeEmpresas) {
+                        empresaMostrarTodas.imprimirEmpresa();
+                        System.out.println();
+                    }
 
                     System.out.println("Digite o ID da empresa: ");
                     int empresaIdAtualizarSalario = entrada.nextInt();
@@ -143,6 +168,7 @@ public class GerenciarFuncionario {
                     }
 
                     if(!updated) {
+                        System.out.println();
                         System.out.println("Empresa e/ou funcionário não encontrado(s).");
                     }
 
@@ -150,18 +176,66 @@ public class GerenciarFuncionario {
 
                 case 4:
                     // Demitir funcionário.
-                    System.out.println("Demitir Funcionário");
-                    System.out.println("Deseja mesmo demitir esse funcionário? (Sim ou Não)");
-                    String decisaoDemitirFunc = entrada.next();
-                    if (Objects.equals(decisaoDemitirFunc, "Sim")) {
-                        func.demitirFuncionario();
+
+                    for (Funcionario funcionarioMostrarTodos : listaDeFuncionarios) {
+                        funcionarioMostrarTodos.imprimirFuncionario();
+                        System.out.println();
                     }
+
+                    System.out.println("Digite o ID do funcionário: ");
+                    int funcIdDemitirFuncionario = entrada.nextInt ();
+
+                    System.out.println();
+
+                    for (Empresa empresaMostrarTodas : listaDeEmpresas) {
+                        empresaMostrarTodas.imprimirEmpresa();
+                        System.out.println();
+                    }
+
+                    System.out.println("Digite o ID da empresa: ");
+                    int empresaIdDemitirFuncionario = entrada.nextInt();
+
+                    boolean fired = false;
+
+                    for (Empresa empresaDemitirObj : listaDeEmpresas) {
+                        if (String.valueOf (empresaIdDemitirFuncionario).equals(empresaDemitirObj.getIdEmpresa())) {
+                            for (Funcionario funcionarioDemitirObj : listaDeFuncionarios) {
+                                if (funcIdDemitirFuncionario == funcionarioDemitirObj.getIdFunc() && empresaDemitirObj.existeFuncionario(funcIdDemitirFuncionario)) {
+                                    System.out.println("Funcionário: " + funcionarioDemitirObj.getNomeFunc() + " foi demitido da Empresa: " + empresaDemitirObj.getRazaoSocial() + ".");
+                                    System.out.println();
+                                    funcionarioDemitirObj.demitirFuncionario();
+                                    listaDeFuncionarios.remove(funcionarioDemitirObj);
+                                    fired = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!fired) {
+                        System.out.println();
+                        System.out.println("Empresa e/ou funcionário não encontrado(s).");
+                    }
+
                     break;
 
                 case 5:
                     // Listar funcionário.
+
+                    for (Funcionario funcionarioMostrarTodos : listaDeFuncionarios) {
+                        funcionarioMostrarTodos.imprimirFuncionario();
+                        System.out.println();
+                    }
+
                     System.out.println("Digite o ID do funcionário que deseja buscar: ");
                     int funcIdBuscar = entrada.nextInt();
+
+                    System.out.println();
+
+                    for (Empresa empresaMostrarTodas : listaDeEmpresas) {
+                        empresaMostrarTodas.imprimirEmpresa();
+                        System.out.println();
+                    }
 
                     System.out.println("Digite o ID da empresa do funcionário: ");
                     int empresaIdBuscar = entrada.nextInt();
@@ -181,6 +255,7 @@ public class GerenciarFuncionario {
                     }
 
                     if(!found) {
+                        System.out.println();
                         System.out.println("Empresa e/ou funcionário não encontrado(s).");
                     }
 
@@ -203,8 +278,21 @@ public class GerenciarFuncionario {
 
                 case 7:
                     // Adicionar funcionário ao quadro da empresa.
+
+                    for (Funcionario funcionarioMostrarTodos : listaDeFuncionarios) {
+                        funcionarioMostrarTodos.imprimirFuncionario();
+                        System.out.println();
+                    }
+
                     System.out.println("Digite o ID do funcionário que você deseja adicionar: ");
                     int funcIdAdd = entrada.nextInt();
+
+                    System.out.println();
+
+                    for (Empresa empresaMostrarTodas : listaDeEmpresas) {
+                        empresaMostrarTodas.imprimirEmpresa();
+                        System.out.println();
+                    }
 
                     System.out.println("Digite o ID da empresa que você deseja incluir o funcionário: ");
                     int empresaIdAdd = entrada.nextInt();
@@ -216,6 +304,8 @@ public class GerenciarFuncionario {
                             for (Funcionario funcAddObj : listaDeFuncionarios) {
                                 if (funcIdAdd == funcAddObj.getIdFunc()) {
                                     empresaAddObj.adicionarEmpregados(funcAddObj);
+                                    System.out.println();
+                                    System.out.println("Funcionário: " + funcAddObj.getNomeFunc() + " adicionado na Empresa " + empresaAddObj.getRazaoSocial() + ".");
                                     added = true;
                                     break;
                                 }
@@ -224,6 +314,7 @@ public class GerenciarFuncionario {
                     }
 
                     if(!added) {
+                        System.out.println();
                         System.out.println("Empresa e/ou funcionário não encontrado(s).");
                     }
 
@@ -231,8 +322,21 @@ public class GerenciarFuncionario {
 
                 case 8:
                     // Verificar a existência de um funcionário na empresa.
+
+                    for (Funcionario funcionarioMostrarTodos : listaDeFuncionarios) {
+                        funcionarioMostrarTodos.imprimirFuncionario();
+                        System.out.println();
+                    }
+
                     System.out.println("Digite o ID do funcionário que você deseja verificar: ");
                     int funcIdBuscaVerify = entrada.nextInt();
+
+                    System.out.println();
+
+                    for (Empresa empresaMostrarTodas : listaDeEmpresas) {
+                        empresaMostrarTodas.imprimirEmpresa();
+                        System.out.println();
+                    }
 
                     System.out.println("Digite o ID da empresa que esse funcionário está cadastrado: ");
                     int empresaIdBuscaVerify = entrada.nextInt();
@@ -241,15 +345,19 @@ public class GerenciarFuncionario {
 
                     for (Empresa empresaBuscaVerifyObj : listaDeEmpresas) {
                         if (String.valueOf(empresaIdBuscaVerify).equals(empresaBuscaVerifyObj.getIdEmpresa())) {
-                            if (empresaBuscaVerifyObj.existeFuncionario(funcIdBuscaVerify)) {
-                                System.out.println("Funcionário existente nessa empresa");
-                                verifyFound = true;
-                                break;
+                            for (Funcionario funcionarioBuscaVerifyObj : listaDeFuncionarios) {
+                                if (funcIdBuscaVerify == funcionarioBuscaVerifyObj.getIdFunc()) {
+                                    System.out.println();
+                                    System.out.println("Funcionário " + funcionarioBuscaVerifyObj.getNomeFunc()  + " existente nessa empresa.");
+                                    verifyFound = true;
+                                    break;
+                                }
                             }
                         }
                     }
 
                     if(!verifyFound) {
+                        System.out.println();
                         System.out.println("Empresa e/ou funcionário não encontrado(s).");
                     }
 
