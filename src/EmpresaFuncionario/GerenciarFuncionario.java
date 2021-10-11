@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class GerenciarFuncionario {
 
-    // TODO : Tratamento de Erros e Exceções.
-
     public static void main(String[] args) {
         boolean status = true;
 
@@ -60,10 +58,18 @@ public class GerenciarFuncionario {
 
                     System.out.println();
                     System.out.println("Digite o salário do funcionário: ");
-                    if (entrada.hasNextLine()) {
-                        double salario = entrada.nextDouble();
-                        func.setSalario(salario);
+
+                    try {
+                        if (entrada.hasNextLine()) {
+                            double salario = entrada.nextDouble();
+                            func.setSalario(salario);
+                        }
+                    } catch (Exception e) {
+                        System.out.println();
+                        System.out.println("Valor inválido!");
+                        break;
                     }
+
 
                     System.out.println();
                     System.out.println("Digite o departamento do funcionário: ");
@@ -151,8 +157,17 @@ public class GerenciarFuncionario {
 
                     boolean updated = false;
 
+                    System.out.println();
                     System.out.println("Digite o novo salario do funcionário que voce deseja alterar: ");
-                    double funcNovoSalario = entrada.nextDouble();
+                    double funcNovoSalario;
+
+                    try {
+                        funcNovoSalario = entrada.nextDouble();
+                    } catch (Exception e) {
+                        System.out.println();
+                        System.out.println("Valor inválido.");
+                        break;
+                    }
 
                     for (Empresa empresaAtualizarObj : listaDeEmpresas) {
                         if (String.valueOf(empresaIdAtualizarSalario).equals(empresaAtualizarObj.getIdEmpresa())) {
